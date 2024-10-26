@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
-
+import Leftbar from './Components/Leftbar';
+import Navbar from './Components/Navbar';
+import Grid from '@mui/material/Grid';
+import Feed from './Components/Feed';
+import Rightbar from './Components/Rightbar';
+import Add from './Components/Add';
+const styles = {
+  right: {
+    position: "sticky",
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
+  },
+}
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+         <Navbar />
+         <Grid container spacing = {2}>
+            <Grid item sm={2} xs={2}>
+            <Leftbar/>
+            </Grid>
+            <Grid item sm={7} xs={10}>
+              <Feed />
+            </Grid>
+            <Grid item sm={3} sx={styles.right} >
+              <Rightbar />
+            </Grid>
+        </Grid>
+        <Add/>
     </div>
   );
 }
